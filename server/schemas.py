@@ -1,7 +1,7 @@
-from app import ma
+from extensions import ma
+from marshmallow import fields
 from models import Guest, Episode, Appearance
 from marshmallow_sqlalchemy import SQLAlchemySchema, auto_field
-from marshmallow import fields
 
 class GuestSchema(SQLAlchemySchema):
     class Meta:

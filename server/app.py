@@ -1,13 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
-from flask_migrate import Migrate
+from extensions import db, ma, migrate
 from flask_restful import Api
 from dotenv import load_dotenv
-import os
+import os 
 
-from models import db
 from resources.episodes import Episodes
 from resources.guests import Guests
 from resources.appearances import Appearances
@@ -25,27 +22,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Enable CORS
 CORS(app)
 
-# Initialize database and migrations
-
-db = SQLAlchemy()
-
-migrate = Migrate()
-ma= Marshmallow()
-
-
-# Initialize Flask-RESTful API
-api = Api(app)
 
 #INIT EXTENSIONS
 db.init_app(app)
 ma.init_app(app)      
 migrate.init_app(app, db)
 
-
-# Root route
-@app.route('/')
-def index():
-    return "<h1>Welcome to the Late Show API</h1>"
+# Initialize Flask-RESTful API
+api = Api(app)
 
 # Add resource routes
 api.add_resource(Episodes, '/episodes', '/episodes/<int:id>')

@@ -12,6 +12,7 @@ flask-migrate = "*"
 marshmallow-sqlalchemy = "*"
 flask-restful = "*"
 flask-marshmallow = "*"
+marshmallow = "*"
 
 [dev-packages]
 
