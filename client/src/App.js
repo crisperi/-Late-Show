@@ -1,5 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import Appearance from './components/appearances';
 
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
           </li>
         })}
       </ul>
+      <h2>Appearances</h2>
+      <Appearance/>
     </>
   );
 }
