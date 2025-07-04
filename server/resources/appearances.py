@@ -18,7 +18,7 @@ class Appearances(Resource):
             new_appearance = appearance_schema.load(data,session=db.session)
             
         except Exception as e  :
-                return {"error": str(e)}, 400
+                return {"error": "validation errors"}, 400
         
         db.session.add(new_appearance)
         db.session.commit()
